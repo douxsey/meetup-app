@@ -1,5 +1,6 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, Suspense} from "react";
 import api from "../services/api";
+const Speakers =  React.lazy(() => import("../components/Speakers"));
 
 export const DetailEvent = (props) => {
 
@@ -29,25 +30,10 @@ export const DetailEvent = (props) => {
             height="120" /></p>
         </div>
       </div>
-      <div id="meetup-details">
-        <ul>
-        {
-          meetup.speakers.map((speaker, index) => (
-            <li key={index} >
-            <div className="speaker-infos">
-              <p><img src={speaker.avatar} alt="thierno" /></p>
-              <div className="meta">
-                <p>{speaker.name}</p>
-                <p>{speaker.title}</p>
-              </div>
-            </div>
-            <p className="talk-title"><i className="icon-talk"></i>{speaker.subject}</p>
-          </li>
-          ))
-        }
-          
-        </ul>
-      </div>
+      <Suspense fallback={<p>Fall kone khar rek</p>}>
+
+      <Speakers meetupId={id} />
+      </Suspense>
     </li>
 
   </ul>
