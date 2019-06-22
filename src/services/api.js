@@ -130,5 +130,8 @@ export default {
     let meetups = data.events;
     return meetups.find(meetup => meetup.id === id)
   },
-  
+  getSpeakers: (meetupId) => {
+    let meetups = data.events;
+    return meetups.find(meetup => meetup.id === meetupId).speakers
+  }
 }

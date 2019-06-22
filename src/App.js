@@ -6,17 +6,21 @@ import Header from './shared/Header';
 import { Home } from './pages/Home';
 import { Footer } from './shared/Footer';
 import { DetailEvent } from './pages/Detail';
+import { ApiContext, ApiProvider } from './components/ApiContext';
 
 function App() {
   return (
     <div className="light" id="body">
-      <Header />
-      <main>
-        <Router>
-          <Route component={Home} exact path="/" />
-          <Route component={DetailEvent} exact path="/details/:id" />
-        </Router>
-      </main>
+      <ApiProvider >
+        <Header />
+        <main>
+          <Router>
+            <Route component={Home} exact path="/" />
+            <Route component={DetailEvent} exact path="/details/:id" />
+          </Router>
+        
+        </main>
+      </ApiProvider>
       <Footer/>
     </div>
     
