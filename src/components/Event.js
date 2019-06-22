@@ -1,20 +1,53 @@
-import React from "react";
+import React, {useState} from "react";
+import { Link } from "react-router-dom";
 
 export const MeetupEvent = (props) => {
   let {meetup} = props;
+  const [modeEdit, setModeEdit] = useState(false);
+  const [modeAdd, setModeAdd] = useState(false);
+  const [name, setName] = useState(meetup.name);
+  const [tags, setTags] = useState(meetup.tags);
+
+  function addNewTag(tagName) {
+    if (tagName) {
+      setTags([...tags, tagName])
+    }
+    setModeAdd(false);
+  }
+
   return (
     <div className="event">
         <ul className="metadata">
-          <li><h1>{meetup.name}</h1></li>
+          <li className="event-title">
+            {
+              !modeEdit 
+              ? ([<Link to={`/details/${meetup.id}`} >
+                    <h1>{name}</h1>
+                  </Link>,
+                  <span onClick={() => setModeEdit(true)} className="icon-edit"></span>
+                 ])
+              : <input value={name} onChange={(event) => setName(event.target.value)} onKeyPress={event => event.key === 'Enter' && setModeEdit(false) } type="text"/>
+            }
+            
+
+          </li>
           <li><span className="icon-date"></span> <span>{meetup.date}</span></li>
           <li><span className="icon-location"></span> <span>{meetup.location}</span></li>
           <li>
           <ul className="tags">
           {
-            meetup.tags.map(tag => (
+            tags.map(tag => (
               <li key={tag} ><a href="#" className="tag">{tag}</a></li>
             ))
           }
+          <li>
+          {
+            !modeAdd
+              ? <span className="icon-add" onClick={() => setModeAdd(true)} ></span>
+              : <input onKeyPress={event => event.key === 'Enter' && addNewTag(event.target.value)} type="text"/>
+          }
+             
+          </li>
             
           </ul>
           </li>

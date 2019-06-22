@@ -176,6 +176,25 @@ footer p {
   align-items: center;
 }
 
+.event .metadata .event-title > input {
+  width: 400px;
+  height: 30px;
+  border-radius: 6px;
+  border: 2px solid rgb(164, 162, 171);
+  outline: none;
+  font-family: "Montserrat", sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+}
+.event .metadata .tags  li > input {
+  height: 20px;
+  border-radius: 6px;
+  border: 2px solid rgb(164, 162, 171);
+  outline: none;
+
+  font-weight: 600;
+}
+
 .event .metadata li span:last-child {
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
@@ -232,6 +251,20 @@ footer p {
 
 .dark .event .icon-date {
   background: url(../img/icons/icon_calendar_dark.svg) left center;
+}
+.event .icon-edit {
+  background: url(../img/icons/icon_edit.svg) right center no-repeat;
+  cursor: pointer;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+}
+.event .icon-add {
+  background: url(../img/icons/icon_add.svg) left center no-repeat;
+  cursor: pointer;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
 }
 
 .dark .event .icon-location {

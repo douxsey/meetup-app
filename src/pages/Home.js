@@ -10,9 +10,7 @@ export const Home = () => {
     {
       meetups.map(meetup => (
         <li key={meetup.id} >
-          <Link to={`/details/${meetup.id}`} >
             <MeetupEvent meetup={meetup} />
-          </Link>
         </li>
       ))
     }
