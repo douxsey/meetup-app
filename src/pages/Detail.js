@@ -1,10 +1,18 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import api from "../services/api";
 
 export const DetailEvent = (props) => {
 
   let {id} = props.match.params;
-  let meetup = api.getMeetup(parseInt(id, 10));
+  const [meetup, setMeetup] = useState(null);
+  useEffect(() => {
+    console.log('hey')
+   setMeetup(api.getMeetup(+id));
+  }, [id])
+
+  if (!meetup) {
+    return null;
+  }
   return (
     <ul id="meetups" className="details">
     <li>
